@@ -190,7 +190,6 @@
       line-height:1;
       white-space:nowrap;
       letter-spacing:6px;
-      /* 修改：标题使用思源宋体粗体 */
       font-family: "Source Han Serif CN", "Noto Serif SC", "思源宋体", serif !important;
     }
     /* 白色标签 */
@@ -832,7 +831,7 @@ AND BEAUTY OF THE SKIN</div>
         return Math.hypot(dx, dy);
       }
 
-      // Canvas导出
+      // Canvas导出（修复：和CSS完全一致）
       async function renderPosterToCanvas(scale = 2){
         const canvas = el.exportCanvas;
         const ctx = el.ctx;
@@ -884,7 +883,6 @@ AND BEAUTY OF THE SKIN</div>
         ctx.fillStyle = '#fff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        // 导出标题：思源宋体粗体
         ctx.font = '700 84px "Source Han Serif CN", "Noto Serif SC", "思源宋体", serif';
         ctx.fillText(title, 540, 170);
 
@@ -917,27 +915,29 @@ AND BEAUTY OF THE SKIN</div>
           ctx.drawImage(img, 42, 902, 916, 576);
         }
 
-        // 右侧竖排标签背景 - 与图片对齐
-        const labelGrad = ctx.createLinearGradient(960, 0, 1040, 0);
+        // 修复：右侧标签 宽度60px、高度250px、位置和CSS一致
+        const labelGrad = ctx.createLinearGradient(1020, 0, 1080, 0);
         labelGrad.addColorStop(0, '#1A3B99');
         labelGrad.addColorStop(1, '#0A1A4A');
         ctx.fillStyle = labelGrad;
-        ctx.fillRect(960, 485, 80, 250);
-        ctx.fillRect(960, 1065, 80, 250);
+        // 治疗前标签：top:165px（320+165），高度250px，宽度60px
+        ctx.fillRect(1020, 485, 60, 250);
+        // 治疗后标签：bottom:165px（1660-80-165-250=1065），高度250px，宽度60px
+        ctx.fillRect(1020, 1065, 60, 250);
 
-        // 竖排文字
+        // 竖排文字（居中，和CSS一致）
         ctx.fillStyle = '#fff';
         ctx.font = '600 32px "Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif';
         ctx.textAlign = 'center';
-        // 治疗前 - 竖排
+        // 治疗前
         const topChars = topLabel.split('');
         topChars.forEach((char, i) => {
-          ctx.fillText(char, 1000, 585 + i * 50);
+          ctx.fillText(char, 1050, 585 + i * 50);
         });
-        // 治疗后 - 竖排
+        // 治疗后
         const bottomChars = bottomLabel.split('');
         bottomChars.forEach((char, i) => {
-          ctx.fillText(char, 1000, 1165 + i * 50);
+          ctx.fillText(char, 1050, 1165 + i * 50);
         });
 
         // 底部信息
