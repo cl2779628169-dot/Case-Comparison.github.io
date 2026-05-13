@@ -158,11 +158,11 @@
       white-space:pre-line;
     }
 
-    /* ========== 标题栏: top:100px, height:200px (100-300px) ========== */
+    /* ========== 标题栏: top:150px, height:200px (150-350px) - 降低位置 ========== */
     .title-bar{
       position:absolute;
       left:0;
-      top:100px;
+      top:150px;
       width:100%;
       height:200px;
       background:linear-gradient(90deg, #2749D6 0%, #09184A 100%);
@@ -199,11 +199,11 @@
       white-space:nowrap;
     }
 
-    /* ========== 对比区域: top:300px, height:1000px (300-1300px) ========== */
+    /* ========== 对比区域: top:350px, height:1000px (350-1350px) ========== */
     .compare-frame{
       position:absolute;
       left:0;
-      top:300px;
+      top:350px;
       width:1080px;
       height:1000px;
       background:#fff;
@@ -280,11 +280,11 @@
       border-radius:2px;
     }
 
-    /* ========== 底部信息: top:1460px, height:100px (1460-1560px) ========== */
+    /* ========== 底部信息: 位于底部横条上方 ========== */
     .footer-copy{
       position:absolute;
       left:0;
-      top:1490px;
+      bottom:130px;
       width:100%;
       text-align:center;
       color:var(--brand);
@@ -296,7 +296,7 @@
     .footer-sub{
       position:absolute;
       left:50%;
-      top:1530px;
+      bottom:90px;
       width:100%;
       transform:translateX(-50%);
       text-align:center;
@@ -306,12 +306,11 @@
       letter-spacing:1px;
     }
 
-    /* ========== 底部横条: top:1560px, height:80px (1560-1640px) ========== */
-    /* 修改2: 高度改为80px，文字完全居中 */
+    /* ========== 底部横条: bottom:0, height:80px - 紧贴底部 ========== */
     .bottom-strip{
       position:absolute;
       left:0;
-      top:1560px;
+      bottom:0;
       width:1080px;
       height:80px;
       background:linear-gradient(90deg,#2749d6 0%,#09184a 100%);
@@ -478,7 +477,6 @@
       .title{font-size:72px}
       /* 响应式: 白色横条 */
       .title-line{width:280px;height:28px}
-      .title-line-text{font-size:16px;letter-spacing:3px}
       .label-row{left:60px;right:60px;top:1320px}
       .label{width:220px;height:60px;font-size:26px;letter-spacing:8px}
       .footer-copy{top:1470px;font-size:26px}
@@ -606,7 +604,7 @@
         hint: '点击文字即可编辑；点击左/右图片区上传图片。裁切页上半部分是按钮，下半部分是图片，裁切结果会直接贴入海报对应区域。',
         brandName: '向雪岑®',
         brandTagline: '还原肌肤\n健康美',
-        brandRight: 'REVIVE HEALTH\nAND BEAUTY OF THE SKIN',
+        brandRight: 'RESTORE HEALTH\nAND BEAUTY OF THE SKIN',
         title: '双C案例实操',
         titleLineText: '向雪岑',
         leftLabel: '护 理 前',
@@ -999,19 +997,20 @@
         ctx.font = '500 20px "Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif';
         ctx.fillText(footerSub, 540, 1550);
 
-        // ========== 底部横条: top:1560px, height:80px (修改2) ==========
-        const grad = ctx.createLinearGradient(0, 1560, 1080, 1560);
+        // ========== 底部横条: bottom:0, height:80px - 紧贴底部 ==========
+        // 海报高度1660px，横条高度80px，所以top = 1660 - 80 = 1580px
+        const grad = ctx.createLinearGradient(0, 1580, 1080, 1580);
         grad.addColorStop(0, '#2749d6');
         grad.addColorStop(1, '#09184a');
         ctx.fillStyle = grad;
-        ctx.fillRect(0, 1560, 1080, 80);
+        ctx.fillRect(0, 1580, 1080, 80);
 
-        // 文字完全居中
+        // 文字完全居中: Y = 1580 + 80/2 = 1620
         ctx.fillStyle = '#fff';
         ctx.font = '500 18px Arial, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(bottomText, 540, 1600);
+        ctx.fillText(bottomText, 540, 1620);
 
         ctx.restore();
         return canvas;
