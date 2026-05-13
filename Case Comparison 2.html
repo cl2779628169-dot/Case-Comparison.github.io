@@ -265,12 +265,12 @@
     }
     .dropzone.has-image .placeholder{display:none}
 
-    /* ========== 右侧竖排标签 ========== */
+    /* ========== 右侧竖排标签 - 对齐图片 ========== */
     .side-label{
       position:absolute;
       right:0;
       width:60px;
-      height:580px;
+      height:250px;
       display:flex;
       flex-direction:column;
       align-items:center;
@@ -284,8 +284,8 @@
       letter-spacing:8px;
       border-radius:2px;
     }
-    .side-label.top{top:0}
-    .side-label.bottom{bottom:0}
+    .side-label.top{ top: 165px; }
+    .side-label.bottom{ bottom: 165px; }
 
     /* ========== 底部信息: top:1500px ========== */
     .footer-info{
@@ -914,13 +914,13 @@ AND BEAUTY OF THE SKIN</div>
           ctx.drawImage(img, 42, 902, 916, 576);
         }
 
-        // 右侧竖排标签背景
+        // 右侧竖排标签背景 - 与图片对齐
         const labelGrad = ctx.createLinearGradient(960, 0, 1040, 0);
         labelGrad.addColorStop(0, '#1A3B99');
         labelGrad.addColorStop(1, '#0A1A4A');
         ctx.fillStyle = labelGrad;
-        ctx.fillRect(960, 320, 80, 580);
-        ctx.fillRect(960, 900, 80, 580);
+        ctx.fillRect(960, 485, 80, 250);
+        ctx.fillRect(960, 1065, 80, 250);
 
         // 竖排文字
         ctx.fillStyle = '#fff';
@@ -929,12 +929,12 @@ AND BEAUTY OF THE SKIN</div>
         // 治疗前 - 竖排
         const topChars = topLabel.split('');
         topChars.forEach((char, i) => {
-          ctx.fillText(char, 1000, 420 + i * 50);
+          ctx.fillText(char, 1000, 585 + i * 50);
         });
         // 治疗后 - 竖排
         const bottomChars = bottomLabel.split('');
         bottomChars.forEach((char, i) => {
-          ctx.fillText(char, 1000, 1000 + i * 50);
+          ctx.fillText(char, 1000, 1165 + i * 50);
         });
 
         // 底部信息
@@ -1128,3 +1128,4 @@ AND BEAUTY OF THE SKIN</div>
   </script>
 </body>
 </html>
+
