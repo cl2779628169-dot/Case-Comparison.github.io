@@ -190,6 +190,8 @@
       line-height:1;
       white-space:nowrap;
       letter-spacing:6px;
+      /* 修改：标题使用思源宋体粗体 */
+      font-family: "Source Han Serif CN", "Noto Serif SC", "思源宋体", serif !important;
     }
     /* 白色标签 */
     .title-tag{
@@ -882,7 +884,8 @@ AND BEAUTY OF THE SKIN</div>
         ctx.fillStyle = '#fff';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.font = '700 84px "Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif';
+        // 导出标题：思源宋体粗体
+        ctx.font = '700 84px "Source Han Serif CN", "Noto Serif SC", "思源宋体", serif';
         ctx.fillText(title, 540, 170);
 
         // 白色标签
@@ -1128,4 +1131,3 @@ AND BEAUTY OF THE SKIN</div>
   </script>
 </body>
 </html>
-
